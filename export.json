@@ -1,0 +1,30 @@
+{
+  "table": "sensor",
+  "schema": {
+    "partition_key": "id",
+    "sort_key": "ct",
+    "other_keys": [
+      "dim"
+    ]
+  },
+  "filters": {
+    "dim": 0,
+    "ct": {
+      "gte": 1262275200000,
+      "lt": 1762240735819,
+      "chunk_by": "year"
+    }
+  },
+  "append_columns": [
+    "ct"
+  ],
+  "tasks": {
+    "source": "file",
+    "path": "/Users/golo/Downloads/export_device_params.json"
+  },
+  "output": {
+    "format": "csv",
+    "directory": "output_data",
+    "filename_pattern": "{partition_key}_{table}_{year}.csv"
+  }
+}

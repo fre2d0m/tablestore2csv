@@ -1,0 +1,35 @@
+{
+  "table": "sensor_data",
+  
+  "schema": {
+    "partition_key": "id",
+    "sort_key": "ct",
+    "other_keys": ["dim"]
+  },
+  
+  "filters": {
+    "dim": 0,
+    "ct": {
+      "gte": 1577836800000,
+      "lt": 1672531200000,
+      "chunk_by": "year"
+    }
+  },
+  
+  "append_columns": ["ct"],
+  
+  "tasks": {
+    "source": "inline",
+    "definitions": {
+      "test_device_001": ["p34:1", "p50:1", "p51:1"],
+      "test_device_002": ["p32:1", "p54:1", "p56:1"]
+    }
+  },
+  
+  "output": {
+    "format": "csv",
+    "directory": "output_data",
+    "filename_pattern": "{partition_key}_{table}_{year}.csv"
+  }
+}
+

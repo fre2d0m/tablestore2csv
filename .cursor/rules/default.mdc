@@ -1,0 +1,69 @@
+---
+alwaysApply: true
+---
+
+# TableStore Data Exporter - Python Standards & Best Practices
+
+## Python Version & Type Hints
+
+### Critical: Python 3.8+ Compatibility
+
+**ALWAYS use capital letter type hints from `typing` module:**
+
+✅ **Correct** (Python 3.8+):
+```python
+from typing import Dict, List, Tuple, Optional, Union, Any
+
+def process_data(items: List[str]) -> Tuple[bool, Optional[str]]:
+    results: Dict[str, Any] = {}
+    return True, None
+```
+
+❌ **Wrong** (Python 3.9+ only, will break):
+```python
+def process_data(items: list[str]) -> tuple[bool, str | None]:  # FAIL on 3.8
+    results: dict[str, any] = {}
+    return True, None
+```
+
+### Type Annotation Rules
+
+1. **Always import from `typing` module**
+   ```python
+   from typing import Dict, List, Tuple, Set, Optional, Union, Any, Callable
+   ```
+
+2. **Use `Optional[T]` not `T | None`**
+   ```python
+   def get_value(key: str) -> Optional[int]:  # ✅
+   def get_value(key: str) -> int | None:    # ❌
+   ```
+
+3. **Use `Union[A, B]` not `A | B`**
+   ```python
+   def parse(value: Union[str, int]) -> bool:  # ✅
+   def parse(value: str | int) -> bool:        # ❌
+   ```
+
+4. **Common type hints**
+   ```python
+   # Collections
+   items: List[str] = []
+   mapping: Dict[str, int] = {}
+   coords: Tuple[float, float] = (0.0, 0.0)
+   unique: Set[int] = set()
+   
+   # Optionals
+   result: Optional[str] = None
+   data: Union[str, int, None] = None
+   
+   # Functions
+   callback: Callable[[int], str]
+   handler: Callable[..., None]
+   ```
+
+## Notices
+
+- I always CORRECT, I DON'T NEED YOU TO TELL ME.
+- DO NOT USE ANY EMOJIS IN RESPONSE
+- DO NOT WRITE ANY SUMMARY DOCUMENT AFTER YOU RESPONSE.

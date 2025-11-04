@@ -1,0 +1,30 @@
+{
+  "table": "sensor",
+  "schema": {
+    "partition_key": "id",
+    "sort_key": "ct",
+    "other_keys": [
+      "dim"
+    ]
+  },
+  "filters": {
+    "dim": 0,
+    "ct": {
+      "gte": 1738473882740,
+      "lt": 1783734384870,
+      "chunk_by": "year"
+    }
+  },
+  "append_columns": [
+    "ct"
+  ],
+  "tasks": {
+    "source": "file",
+    "path": "tasks/device_mappings.json"
+  },
+  "output": {
+    "format": "csv",
+    "directory": "output_data",
+    "filename_pattern": "{partition_key}_{table}_{year}.csv"
+  }
+}

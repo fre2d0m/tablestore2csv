@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://your-instance.cn-hangzhou.ots.aliyuncs.com",
+  "access_key_id": "your-access-key-id",
+  "access_key_secret": "your-access-key-secret",
+  "instance_name": "your-instance-name"
+}
+

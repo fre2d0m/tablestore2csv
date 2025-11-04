@@ -1,0 +1,12 @@
+[project]
+name = "tablestore2csv"
+version = "2.0.0"
+description = "General-purpose Aliyun TableStore data exporter"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "tablestore>=5.4.0",
+    "tqdm>=4.66.0",
+    "jsonschema>=4.20.0",
+    "python-dateutil>=2.8.0",
+]
